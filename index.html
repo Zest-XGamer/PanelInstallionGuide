@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,16 +37,20 @@
 <body>
   <h1>Pterodactyl Panel Setup Commands</h1>
 
-    <pre><code>sudo su</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Switch to root user -->
-    
-    <pre><code>sudo apt update && sudo apt upgrade</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Update and upgrade packages -->
-    
-    <pre><code>apt install firewalld -y && firewall-cmd --permanent --zone=public --add-port=22/tcp</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Install and configure firewalld -->
-    
-    <pre><code>firewall-cmd --permanent --zone=public --add-port=80/tcp
+  <!-- Command to switch to root user -->
+  <pre><code>sudo su</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Command to switch to root user</strong></p>
+
+  <!-- Command to update and upgrade system -->
+  <pre><code>sudo apt update && sudo apt upgrade</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Command to update and upgrade system</strong></p>
+
+  <!-- Command to install firewall and add port 22 for SSH -->
+  <pre><code>apt install firewalld -y && firewall-cmd --permanent --zone=public --add-port=22/tcp</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Command to install firewall and add port 22 for SSH</strong></p>
+
+  <!-- Add multiple ports to firewall -->
+  <pre><code>firewall-cmd --permanent --zone=public --add-port=80/tcp
 firewall-cmd --permanent --zone=public --add-port=443/tcp
 firewall-cmd --permanent --zone=public --add-port=2022/tcp
 firewall-cmd --permanent --zone=public --add-port=5657/tcp
@@ -57,140 +60,130 @@ firewall-cmd --permanent --zone=public --add-port=8080/udp
 firewall-cmd --permanent --zone=public --add-port=25565-25575/tcp
 firewall-cmd --permanent --zone=public --add-port=25565-25575/udp
 firewall-cmd --reload</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Open necessary ports for firewall -->
-    
-    <pre><code>apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Install essential packages for adding repositories -->
-    
-    <pre><code>LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Add PHP repository -->
-    
-    <pre><code>curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Add Redis GPG key -->
-    
-    <pre><code>echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Add Redis repository -->
-    
-    <pre><code>curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Add MariaDB repository -->
-    
-    <pre><code>apt update</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Update package lists -->
-    
-    <pre><code>apt -y install php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Install necessary packages -->
-    
-    <pre><code>curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Install Composer -->
-    
-    <pre><code>mkdir -p /var/www/pterodactyl</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Create the Pterodactyl directory -->
-    
-    <pre><code>cd /var/www/pterodactyl</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Navigate to the Pterodactyl directory -->
-    
-    <pre><code>curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Download Pterodactyl Panel -->
-    
-    <pre><code>tar -xzvf panel.tar.gz</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Extract Pterodactyl Panel -->
-    
-    <pre><code>chmod -R 755 storage/* bootstrap/cache/</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Set correct file permissions -->
-    
-    <pre><code>mysql -u root -p</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Login to MySQL -->
-    
-    <pre><code>CREATE USER 'pterodactyl'@'127.0.0.1' IDENTIFIED BY 'MZDB@176';</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Create MySQL user for Pterodactyl -->
-    
-    <pre><code>CREATE DATABASE panel;</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Create Pterodactyl database -->
-    
-    <pre><code>GRANT ALL PRIVILEGES ON panel.* TO 'pterodactyl'@'127.0.0.1' WITH GRANT OPTION;</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Grant privileges to Pterodactyl MySQL user -->
-    
-    <pre><code>Exit</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Exit MySQL -->
-    
-    <pre><code>cp .env.example .env</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Copy environment example configuration -->
-    
-    <pre><code>COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Install Composer dependencies -->
-    
-    <pre><code>php artisan key:generate --force</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Generate the application key -->
-    
-    <pre><code>php artisan p:environment:setup</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Set up environment settings -->
-    
-    <pre><code>php artisan p:environment:database</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Configure database environment -->
-    
-    <pre><code>php artisan migrate --seed --force</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Migrate and seed the database -->
-    
-    <pre><code>php artisan p:user:make</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Create a user for Pterodactyl -->
-    
-    <pre><code>chown -R www-data:www-data /var/www/pterodactyl/*</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Set correct ownership for files -->
-    
-    <pre><code>sudo crontab -e</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Edit crontab for periodic tasks -->
-    
-    <pre><code>1</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Schedule the cron job -->
-    
-    <pre><code>nano /etc/systemd/system/pteroq.service</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Create Pterodactyl Queue Worker service file -->
-    
-    <pre><code>sudo systemctl enable --now redis-server</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Enable Redis service -->
-    
-    <pre><code>sudo systemctl enable --now pteroq.service</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Enable Pterodactyl Queue Worker service -->
-    
-    <pre><code>sudo apt update</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Update package lists -->
-    
-    <pre><code>sudo apt install -y certbot</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Install Certbot -->
-    
-    <pre><code>sudo apt install -y python3-certbot-nginx</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Install Nginx plugin for Certbot -->
-    
-    <pre><code>certbot certonly --nginx -d {IP}</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Obtain SSL certificate from Certbot -->
-    
-    <pre><code>sudo crontab -e</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Edit crontab for Certbot renewal -->
-    
-    <pre><code>[0 23 * * * certbot renew --quiet --deploy-hook "systemctl restart nginx"]</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Add renewal cron job -->
-    
-    <pre><code>rm /etc/nginx/sites-enabled/default</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Remove default Nginx config -->
-    
-    <pre><code>nano /etc/nginx/sites-available/pterodactyl.conf</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Create Pterodactyl Nginx configuration -->
-    
-    <pre><code>sudo ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Enable Pterodactyl site -->
-    
-    <pre><code>sudo systemctl restart nginx</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
-    <!-- Restart Nginx -->
-    
-  <script>
-    function copyToClipboard(button) {
-      const code = button.previousElementSibling;
-      const text = code.innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        button.textContent = 'Copied!';
-        setTimeout(() => button.textContent = 'Copy', 2000);
-      });
-    }
-  </script>
+  <p><strong># Add multiple ports to firewall</strong></p>
+
+  <!-- Install necessary packages for repository management -->
+  <pre><code>apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Install necessary packages for repository management</strong></p>
+
+  <!-- Add repository for PHP -->
+  <pre><code>LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Add repository for PHP</strong></p>
+
+  <!-- Add Redis GPG key -->
+  <pre><code>curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Add Redis GPG key</strong></p>
+
+  <!-- Add Redis repository -->
+  <pre><code>echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Add Redis repository</strong></p>
+
+  <!-- Install MariaDB repository setup -->
+  <pre><code>curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Install MariaDB repository setup</strong></p>
+
+  <!-- Update apt repositories after adding Redis and MariaDB -->
+  <pre><code>apt update</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Update apt repositories after adding Redis and MariaDB</strong></p>
+
+  <!-- Install required packages for PHP, MariaDB, Nginx, Redis, Composer -->
+  <pre><code>apt -y install php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Install required packages for PHP, MariaDB, Nginx, Redis, Composer</strong></p>
+
+  <!-- Install Composer globally -->
+  <pre><code>curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Install Composer globally</strong></p>
+
+  <!-- Create Pterodactyl directory -->
+  <pre><code>mkdir -p /var/www/pterodactyl</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Create Pterodactyl directory</strong></p>
+
+  <!-- Download and extract Pterodactyl Panel -->
+  <pre><code>cd /var/www/pterodactyl
+curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz
+tar -xzvf panel.tar.gz</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Download and extract Pterodactyl Panel</strong></p>
+
+  <!-- Set permissions for the extracted files -->
+  <pre><code>chmod -R 755 storage/* bootstrap/cache/</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Set permissions for the extracted files</strong></p>
+
+  <!-- Access MariaDB to create user and database -->
+  <pre><code>mysql -u root -p</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Access MariaDB to create user and database</strong></p>
+
+  <!-- Create user and database for Pterodactyl -->
+  <pre><code>CREATE USER 'pterodactyl'@'127.0.0.1' IDENTIFIED BY 'MZDB@176';
+CREATE DATABASE panel;
+GRANT ALL PRIVILEGES ON panel.* TO 'pterodactyl'@'127.0.0.1' WITH GRANT OPTION;
+Exit</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Create user and database for Pterodactyl</strong></p>
+
+  <!-- Copy example environment file to actual .env file -->
+  <pre><code>cp .env.example .env</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Copy example environment file to actual .env file</strong></p>
+
+  <!-- Install composer dependencies for Pterodactyl -->
+  <pre><code>COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Install composer dependencies for Pterodactyl</strong></p>
+
+  <!-- Generate application key for Pterodactyl -->
+  <pre><code>php artisan key:generate --force</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Generate application key for Pterodactyl</strong></p>
+
+  <!-- Set up environment variables for the panel -->
+  <pre><code>php artisan p:environment:setup</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Set up environment variables for the panel</strong></p>
+
+  <!-- Set up environment database variables -->
+  <pre><code>php artisan p:environment:database</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Set up environment database variables</strong></p>
+
+  <!-- Run migrations and seeding -->
+  <pre><code>php artisan migrate --seed --force</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Run migrations and seeding</strong></p>
+
+  <!-- Create the first Pterodactyl user -->
+  <pre><code>php artisan p:user:make
+yes
+mzd176@gmail.com
+ZestX
+Zest
+X
+MZDB@176</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Create the first Pterodactyl user</strong></p>
+
+  <!-- Change ownership of the Pterodactyl directory to the web user -->
+  <pre><code>chown -R www-data:www-data /var/www/pterodactyl/*</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Change ownership of the Pterodactyl directory to the web user</strong></p>
+
+  <!-- Edit crontab to schedule Pterodactyl commands -->
+  <pre><code>sudo crontab -e
+1
+[* * * * * php /var/www/pterodactyl/artisan schedule:run >> /dev/null 2>&1]</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Edit crontab to schedule Pterodactyl commands</strong></p>
+
+  <!-- Add Pterodactyl Queue Worker systemd service -->
+  <pre><code>nano /etc/systemd/system/pteroq.service
+# Pterodactyl Queue Worker File
+# ----------------------------------
+
+[Unit]
+Description=Pterodactyl Queue Worker
+After=redis-server.service
+
+[Service]
+User=www-data
+Group=www-data
+Restart=always
+ExecStart=/usr/bin/php /var/www/pterodactyl/artisan queue:work --queue=high,standard,low --sleep=3 --tries=3
+StartLimitInterval=180
+StartLimitBurst=30
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target</code><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button></pre>
+  <p><strong># Add Pterodactyl Queue Worker systemd service</strong></p>
+
 </body>
 </html>
